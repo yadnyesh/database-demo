@@ -1,6 +1,7 @@
 package com.in28minutes.database.databasedemo;
 
-import com.in28minutes.database.databasedemo.jpa.PersonJpaRepository;
+import com.in28minutes.database.databasedemo.entity.Course;
+import com.in28minutes.database.databasedemo.repository.CourseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class JpaDemoApplication implements CommandLineRunner{
 
 
 	@Autowired
-	PersonJpaRepository personJpaRepository;
+	private CourseRepository courseRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaDemoApplication.class, args);
@@ -23,10 +24,9 @@ public class JpaDemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... strings) throws Exception {
-//
-//
-//		logger.info("User ID 10001: {}", personJpaRepository.findById(10001));
-//
+		Course course = courseRepository.findById(10001L);
+		logger.info("Course Details: {}", course);
+
 ////		logger.info("All Users: {}", personJdbcDao.findAll());
 ////		logger.info("Deleting 10002: #rows {}",
 ////				personJdbcDao.deleteById(10002));
