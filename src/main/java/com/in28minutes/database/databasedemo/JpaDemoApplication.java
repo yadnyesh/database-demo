@@ -37,7 +37,7 @@ public class JpaDemoApplication implements CommandLineRunner{
 				personJpaRepository.insert(new Person("Tara", "Berlin", new Date())));
 		logger.info("Updating 10003: #rows {}",
 				personJpaRepository.update(new Person(10003, "Name 3", "Berlin 3", new Date())));
-//		logger.info("All Users: {}", personJdbcDao.findAll());
+		logger.info("All Users: {}", personJpaRepository.findAll());
 		personJpaRepository.deleteById(10002);
 	}
 }
