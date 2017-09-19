@@ -56,7 +56,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "\nPerson{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
