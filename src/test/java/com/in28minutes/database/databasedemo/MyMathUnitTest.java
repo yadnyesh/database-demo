@@ -1,5 +1,6 @@
 package com.in28minutes.database.databasedemo;
 
+import com.in28minutes.database.databasedemo.entity.MyMath;
 import org.junit.Test;
 
 /**
@@ -8,7 +9,9 @@ import org.junit.Test;
 public class MyMathUnitTest {
 
     @Test
-    public void test() {
-
+    public void sum_with3numbers() {
+        MyMath myMath = new MyMath();
+        int result = myMath.sum(new int[]{1,2,3});
+        assert(result == 6);
     }
 }
