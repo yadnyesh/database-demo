@@ -40,10 +40,15 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager() {
-        Course course = new Course("Web servies in 100 steps");
-        em.persist(course);
-        course.setName("Web servies in 100 steps - Updated");
+        Course course1 = new Course("Web servies in 100 steps");
+        em.persist(course1);
+        course1.setName("Web servies in 100 steps - Updated");
 
+        Course course2 = new Course("AngularJS in 100 steps");
+        em.persist(course2);
+        course2.setName("AngularJS in 100 steps - Updated");
         //Entity manager will persist change due to the @Transactional annotation
+        // use em.detach(course) to detach the course object from Transaction
+        //OR use em.clear()
     }
 }
