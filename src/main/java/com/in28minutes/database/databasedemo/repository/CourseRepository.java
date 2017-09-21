@@ -50,5 +50,7 @@ public class CourseRepository {
         //Entity manager will persist change due to the @Transactional annotation
         // use em.detach(course) to detach the course object from Transaction
         //OR use em.clear()
+
+        //Read from database using em.refresh(course1);
     }
 }
