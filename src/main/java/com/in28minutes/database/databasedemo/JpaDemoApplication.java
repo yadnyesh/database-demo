@@ -25,18 +25,19 @@ public class JpaDemoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... strings) throws Exception {
 		Course course = courseRepository.findById(10001L);
-		logger.info("Course Details: {}", course);
-		courseRepository.save(new Course("Microservices in 100 steps"));
-		//courseRepository.deleteById(10001L);
-
-////		logger.info("All Users: {}", personJdbcDao.findAll());
-////		logger.info("Deleting 10002: #rows {}",
-////				personJdbcDao.deleteById(10002));
-//		logger.info("Inserting 10004: #rows {}",
-//				personJpaRepository.insert(new Person("Tara", "Berlin", new Date())));
-//		logger.info("Updating 10003: #rows {}",
-//				personJpaRepository.update(new Person(10003, "Name 3", "Berlin 3", new Date())));
-//		logger.info("All Users: {}", personJpaRepository.findAll());
-//		personJpaRepository.deleteById(10002);
+		courseRepository.playWithEntityManager();
+//		logger.info("Course Details: {}", course);
+//		courseRepository.save(new Course("Microservices in 100 steps"));
+//		//courseRepository.deleteById(10001L);
+//
+//////		logger.info("All Users: {}", personJdbcDao.findAll());
+//////		logger.info("Deleting 10002: #rows {}",
+//////				personJdbcDao.deleteById(10002));
+////		logger.info("Inserting 10004: #rows {}",
+////				personJpaRepository.insert(new Person("Tara", "Berlin", new Date())));
+////		logger.info("Updating 10003: #rows {}",
+////				personJpaRepository.update(new Person(10003, "Name 3", "Berlin 3", new Date())));
+////		logger.info("All Users: {}", personJpaRepository.findAll());
+////		personJpaRepository.deleteById(10002);
 	}
 }

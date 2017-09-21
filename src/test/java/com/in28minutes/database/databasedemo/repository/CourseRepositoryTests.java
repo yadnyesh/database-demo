@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = JpaDemoApplication.class)
 public class CourseRepositoryTests {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+				private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	CourseRepository courseRepository;
@@ -56,6 +56,12 @@ public class CourseRepositoryTests {
 		course.setName("JPA in 500 Steps");
 		course = courseRepository.save(course);
 		Assert.assertEquals("JPA in 500 Steps",course.getName());
+	}
+
+	@Test
+	@DirtiesContext
+	public void playWithEntityManager() {
+		courseRepository.playWithEntityManager();
 	}
 
 }
