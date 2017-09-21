@@ -48,4 +48,14 @@ public class CourseRepositoryTests {
 		logger.info("Tests for Delete by ID");
 	}
 
+	@Test
+	@DirtiesContext
+	public void save_basic() {
+		Course course = courseRepository.findById(10001L);
+		Assert.assertEquals("JPA in 50 Steps",course.getName());
+		course.setName("JPA in 500 Steps");
+		course = courseRepository.save(course);
+		Assert.assertEquals("JPA in 500 Steps",course.getName());
+	}
+
 }
