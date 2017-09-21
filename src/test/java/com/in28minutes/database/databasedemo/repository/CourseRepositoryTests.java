@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -36,6 +37,15 @@ public class CourseRepositoryTests {
 		//assert("JPA in 50 Steps".equals(course.getName()));
 		logger.info("Tests are Running");
 		Assert.assertEquals("JPA in 50 Steps",course.getName());
+	}
+
+	@Test
+	@DirtiesContext
+	public void deleteById_basic() {
+		courseRepository.deleteById(10002L);
+		Assert.assertNull(courseRepository.findById(10002L));
+		//assert("JPA in 50 Steps".equals(course.getName()));
+		logger.info("Tests for Delete by ID");
 	}
 
 }

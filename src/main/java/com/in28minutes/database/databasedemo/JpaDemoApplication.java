@@ -26,6 +26,7 @@ public class JpaDemoApplication implements CommandLineRunner{
 	public void run(String... strings) throws Exception {
 		Course course = courseRepository.findById(10001L);
 		logger.info("Course Details: {}", course);
+		//courseRepository.deleteById(10001L);
 
 ////		logger.info("All Users: {}", personJdbcDao.findAll());
 ////		logger.info("Deleting 10002: #rows {}",
