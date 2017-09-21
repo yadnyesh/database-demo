@@ -21,6 +21,7 @@ public class CourseRepository {
 
     @Autowired
     EntityManager em;
+    //Entity manager is the interface to PersistentContext
 
     public Course findById(Long id) {
         return em.find(Course.class, id);
