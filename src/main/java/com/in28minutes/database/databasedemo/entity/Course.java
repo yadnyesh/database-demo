@@ -3,14 +3,12 @@ package com.in28minutes.database.databasedemo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * Created by z063407 on 9/19/17.
  */
 
 @Entity
-@Table(name="CourseDetails")
 public class Course {
     @Id
     @GeneratedValue
