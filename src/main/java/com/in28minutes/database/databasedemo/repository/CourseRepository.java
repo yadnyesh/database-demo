@@ -45,7 +45,7 @@ public class CourseRepository {
         em.persist(course1);
         course1.setName("Web servies in 100 steps - Updated");
 
-        Course course2 = new Course("AngularJS in 100 steps");
+        Course course2 = findById(10002L);
         em.persist(course2);
         course2.setName("AngularJS in 100 steps - Updated");
         //Entity manager will persist change due to the @Transactional annotation

@@ -1,14 +1,20 @@
 package com.in28minutes.database.databasedemo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * Created by z063407 on 9/19/17.
  */
 
 @Entity
+@NamedQueries(value = {@NamedQuery(name="query_get_all_courses", query = "Select c from Course c"),
+        @NamedQuery(name="query_get_100_Step_courses", query = "Select c From Course c where name like '%100 Steps'")})
+
+
 public class Course {
     @Id
     @GeneratedValue
@@ -16,6 +22,11 @@ public class Course {
 
     private String name;
 
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate;
+
+    @CreationTimestamp
+    private LocalDateTime createdDate;
 
     protected Course() {
 
