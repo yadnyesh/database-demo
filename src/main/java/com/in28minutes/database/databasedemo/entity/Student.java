@@ -1,9 +1,6 @@
 package com.in28minutes.database.databasedemo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by z063407 on 9/22/17.
@@ -17,6 +14,9 @@ public class Student {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToOne
+    private Passport passport;
 
     public Student() {
     }
@@ -41,11 +41,20 @@ public class Student {
         this.name = name;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", passport=" + passport +
                 '}';
     }
 }
