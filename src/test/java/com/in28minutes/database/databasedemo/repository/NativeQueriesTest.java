@@ -39,4 +39,21 @@ public class NativeQueriesTest {
 		List<Course> resultList = query.getResultList();
 		logger.info("Select * From Course c -> {}", resultList);
 	}
+
+
+	@Test
+	public void	native_queries_with_parameter() {
+		Query query = entityManager.createNativeQuery("Select * from Course where id = ?", Course.class);
+		query.setParameter(1, 10001L);
+		List<Course> resultList = query.getResultList();
+		logger.info("Select * From Course c -> {}", resultList);
+	}
+
+	@Test
+	public void	native_queries_with__named_parameter() {
+		Query query = entityManager.createNativeQuery("Select * from Course where id = :id", Course.class);
+		query.setParameter("id", 10001L);
+		List<Course> resultList = query.getResultList();
+		logger.info("Select * From Course c -> {}", resultList);
+	}
 }
