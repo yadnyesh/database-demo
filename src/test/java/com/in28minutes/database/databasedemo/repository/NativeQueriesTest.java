@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -55,5 +56,13 @@ public class NativeQueriesTest {
 		query.setParameter("id", 10001L);
 		List<Course> resultList = query.getResultList();
 		logger.info("Select * From Course c -> {}", resultList);
+	}
+
+	@Test
+	@Transactional
+	public void	native_queries_to_update() {
+		Query query = entityManager.createNativeQuery("Update Course set last_updated_date=sysdate()", Course.class);
+		int noOfRowsUpdated = query.executeUpdate();
+		logger.info("noOfRowsUpdated -> {}", noOfRowsUpdated);
 	}
 }
