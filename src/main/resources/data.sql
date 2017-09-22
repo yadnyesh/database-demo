@@ -22,3 +22,7 @@ insert into course(id, name, created_date, last_updated_date) values(10004,'JPA 
 -- values(10002,'Spring in 50 Steps', sysdate(), sysdate(),false);
 -- insert into course(id, name, created_date, last_updated_date,is_deleted)
 -- values(10003,'Spring Boot in 100 Steps', sysdate(), sysdate(),false);
+
+insert into student(id,name,passport_id) values(20001,'Ranga',40001);
+insert into student(id,name,passport_id) values(20002,'Adam',40002);
+insert into student(id,name,passport_id) values(20003,'Jane',40003);
