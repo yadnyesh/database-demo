@@ -1,7 +1,6 @@
 package com.in28minutes.database.databasedemo;
 
 import com.in28minutes.database.databasedemo.repository.CourseRepository;
-import com.in28minutes.database.databasedemo.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,9 @@ public class JpaDemoApplication implements CommandLineRunner{
 
 	@Autowired
 	private CourseRepository courseRepository;
-
-	@Autowired
-	private StudentRepository studentRepository;
+//
+//	@Autowired
+//	private StudentRepository studentRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaDemoApplication.class, args);
@@ -27,6 +26,7 @@ public class JpaDemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... strings) throws Exception {
-		studentRepository.saveStudentWithPassport();
+		//studentRepository.saveStudentWithPassport();
+		courseRepository.addReviewsForCourse();
 	}
 }

@@ -1,6 +1,7 @@
 package com.in28minutes.database.databasedemo.repository;
 
 import com.in28minutes.database.databasedemo.entity.Course;
+import com.in28minutes.database.databasedemo.entity.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,19 @@ public class CourseRepository {
         //OR use em.clear()
 
         //Read from database using em.refresh(course1);
+    }
+
+    public void addReviewsForCourse() {
+        Course course = findById(10003L);
+        logger.info("course.getreviews() -> {}", course.getReviews());
+        Review review = new Review("5", "Great Handson Stuff");
+        Review review1 = new Review("5", "Awesome Stuff");
+        course.addReview(review);
+        review.setCourse(course);
+        course.addReview(review1);
+        review.setCourse(course);
+
+        em.persist(review);
+        em.persist(review1);
     }
 }
