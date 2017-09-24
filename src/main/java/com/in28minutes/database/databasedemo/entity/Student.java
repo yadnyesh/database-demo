@@ -1,6 +1,8 @@
 package com.in28minutes.database.databasedemo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by z063407 on 9/22/17.
@@ -17,6 +19,9 @@ public class Student {
 
     @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
+
+    @ManyToMany
+    private List<Course> courseList = new ArrayList<>();
 
     public Student() {
     }
@@ -47,6 +52,14 @@ public class Student {
 
     public void setPassport(Passport passport) {
         this.passport = passport;
+    }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void addCourse(Course course) {
+        this.courseList.add(course);
     }
 
     @Override

@@ -23,6 +23,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -34,6 +35,9 @@ public class CourseRepositoryTests {
 
 	@Autowired
 	CourseRepository courseRepository;
+
+	@Autowired
+	EntityManager em;
 
 	@Test
 	public void findById_basic() {
@@ -74,7 +78,13 @@ public class CourseRepositoryTests {
 		Course course = courseRepository.findById(10003L);
 		List<Review> reviewList = course.getReviews();
 		logger.info("reviews -> {}", reviewList);
-		//courseRepository.playWithEntityManager();
+	}
+
+	@Test
+	@Transactional
+	public void retrieveCourseFromReview() {
+		Review review = em.find(Review.class, 50001L);
+		logger.info("Course from reviews -> {}", review.getCourse());
 	}
 
 }
