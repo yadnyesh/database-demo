@@ -1,5 +1,7 @@
 package com.in28minutes.database.databasedemo;
 
+import com.in28minutes.database.databasedemo.entity.Course;
+import com.in28minutes.database.databasedemo.entity.Student;
 import com.in28minutes.database.databasedemo.repository.CourseRepository;
 import com.in28minutes.database.databasedemo.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -32,6 +34,7 @@ public class JpaDemoApplication implements CommandLineRunner{
 //		reviewList.add(new Review ("5", "Too Good Hands on Stuff"));
 //		reviewList.add(new Review("5", "Hatsoff"));
 //		courseRepository.addReviewsForCourse(10003L, reviewList);
-		studentRepository.insertHardcodedStudentandCourse();
+		//studentRepository.insertHardcodedStudentandCourse();
+		studentRepository.insertStudentandCourse(new Student("Jack and Jill"), new Course("Fooling in 100 Steps"));
 	}
 }

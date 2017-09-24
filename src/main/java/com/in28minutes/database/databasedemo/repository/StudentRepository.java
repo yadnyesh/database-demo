@@ -60,4 +60,14 @@ public class StudentRepository {
 
         entityManager.persist(student);
     }
+
+    public void insertStudentandCourse(Student student, Course course) {
+
+        student.addCourse(course);
+        course.addStudent(student);
+
+        entityManager.persist(student);
+        entityManager.persist(course);
+
+    }
 }
