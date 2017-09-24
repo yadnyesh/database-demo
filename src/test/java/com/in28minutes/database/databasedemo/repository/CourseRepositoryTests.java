@@ -12,6 +12,7 @@ package com.in28minutes.database.databasedemo.repository;
 
 import com.in28minutes.database.databasedemo.JpaDemoApplication;
 import com.in28minutes.database.databasedemo.entity.Course;
+import com.in28minutes.database.databasedemo.entity.Review;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JpaDemoApplication.class)
@@ -62,6 +66,15 @@ public class CourseRepositoryTests {
 	@DirtiesContext
 	public void playWithEntityManager() {
 		courseRepository.playWithEntityManager();
+	}
+
+	@Test
+	@Transactional
+	public void retrieveReviewsForCourse() {
+		Course course = courseRepository.findById(10003L);
+		List<Review> reviewList = course.getReviews();
+		logger.info("reviews -> {}", reviewList);
+		//courseRepository.playWithEntityManager();
 	}
 
 }
