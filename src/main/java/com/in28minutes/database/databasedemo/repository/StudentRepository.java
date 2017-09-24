@@ -1,5 +1,6 @@
 package com.in28minutes.database.databasedemo.repository;
 
+import com.in28minutes.database.databasedemo.entity.Course;
 import com.in28minutes.database.databasedemo.entity.Passport;
 import com.in28minutes.database.databasedemo.entity.Student;
 import org.slf4j.Logger;
@@ -44,6 +45,19 @@ public class StudentRepository {
         entityManager.persist(passport);
         Student student = new Student("Mike");
         student.setPassport(passport);
+        entityManager.persist(student);
+    }
+
+    public void insertHardcodedStudentandCourse() {
+        Student student = new Student("Jack");
+        Course course = new Course("Microservices in 100 Steps");
+
+        entityManager.persist(student);
+        entityManager.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
+
         entityManager.persist(student);
     }
 }
