@@ -1,6 +1,7 @@
 package com.in28minutes.database.databasedemo.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 public class Review {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String rating;
