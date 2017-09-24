@@ -2,6 +2,7 @@ package com.in28minutes.database.databasedemo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by z063407 on 9/22/17.
@@ -15,6 +16,9 @@ public class Review {
     private String rating;
 
     private String description;
+
+    @ManyToOne
+    private Course course;
 
     public Review() {
     }
@@ -46,6 +50,14 @@ public class Review {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override
