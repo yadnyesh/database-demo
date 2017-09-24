@@ -19,6 +19,13 @@ public abstract class Employee {
     @Column(nullable = false)
     private String name;
 
+    public Employee() {
+    }
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
