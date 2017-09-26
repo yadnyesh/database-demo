@@ -28,6 +28,6 @@ public class EmployeeRepository {
     }
 
     public List<Employee> retrieveAllEmployees(Long id) {
-        return employeeEntityManager.
+        //return employeeEntityManager.
     }
 }
