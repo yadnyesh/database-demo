@@ -1,16 +1,23 @@
 package com.in28minutes.database.databasedemo;
 
-import com.in28minutes.database.databasedemo.entity.Course;
-import com.in28minutes.database.databasedemo.entity.Student;
+import com.in28minutes.database.databasedemo.entity.FullTimeEmployee;
+import com.in28minutes.database.databasedemo.entity.PartTimeEmployee;
 import com.in28minutes.database.databasedemo.repository.CourseRepository;
+import com.in28minutes.database.databasedemo.repository.EmployeeRepository;
 import com.in28minutes.database.databasedemo.repository.StudentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigDecimal;
+
 @SpringBootApplication
 public class JpaDemoApplication implements CommandLineRunner{
+
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private CourseRepository courseRepository;
@@ -18,12 +25,19 @@ public class JpaDemoApplication implements CommandLineRunner{
 	@Autowired
 	private StudentRepository studentRepository;
 
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(JpaDemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
-		studentRepository.insertStudentandCourse(new Student("Jack and Jill"), new Course("Fooling in 100 Steps"));
+		//studentRepository.insertStudentandCourse(new Student("Jack and Jill"), new Course("Fooling in 100 Steps"));
+		employeeRepository.insertEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+		employeeRepository.insertEmployee(new PartTimeEmployee("Jill", new BigDecimal("50")));
+		logger.info("All Employees () -> {}", employeeRepository.retrieveAllEmployees());
+
 	}
 }

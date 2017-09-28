@@ -27,7 +27,7 @@ public class EmployeeRepository {
         employeeEntityManager.persist(employee);
     }
 
-    public List<Employee> retrieveAllEmployees(Long id) {
-        //return employeeEntityManager.
+    public List<Employee> retrieveAllEmployees() {
+        return employeeEntityManager.createQuery("Select e from Employee e", Employee.class).getResultList();
     }
 }
