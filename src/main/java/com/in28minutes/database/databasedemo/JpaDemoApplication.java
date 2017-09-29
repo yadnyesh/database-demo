@@ -36,7 +36,7 @@ public class JpaDemoApplication implements CommandLineRunner{
 	public void run(String... strings) throws Exception {
 		employeeRepository.insertEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
 		employeeRepository.insertEmployee(new PartTimeEmployee("Jill", new BigDecimal("50")));
-		logger.info("All Employees () -> {}", employeeRepository.retrieveAllEmployees());
-
+		logger.info("All Employees () -> {}", employeeRepository.retrieveAllPartTimeEmployees());
+		logger.info("All Employees () -> {}", employeeRepository.retrieveAllFullTimeEmployees());
 	}
 }

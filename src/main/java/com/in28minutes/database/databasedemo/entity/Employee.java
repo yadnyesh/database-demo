@@ -6,9 +6,9 @@ import javax.persistence.*;
  * Created by z063407 on 9/24/17.
  */
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "EmployeeType")
+
+@MappedSuperclass
+//@Entity
 public abstract class Employee {
 
     @Id
