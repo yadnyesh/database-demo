@@ -12,6 +12,7 @@ package com.in28minutes.database.databasedemo.repository;
 
 import com.in28minutes.database.databasedemo.JpaDemoApplication;
 import com.in28minutes.database.databasedemo.entity.Course;
+import com.in28minutes.database.databasedemo.entity.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -79,6 +81,14 @@ public class JPQLTest {
 	public void	jpql_courses_with_atleast_2_students() {
 		TypedQuery<Course> query = entityManager.createQuery("Select c from Course c where size(c.studentList) >= 2", Course.class);
 		List<Course> resultList = query.getResultList();
+		logger.info("jpql_where -> {}", resultList);
+	}
+
+	@Test
+	@Transactional
+	public void	jpql_students_with_passports_in_pattern() {
+		TypedQuery<Student> query = entityManager.createQuery("Select s from Student s where s.passport.number like '%1234%' ", Student.class);
+		List<Student> resultList = query.getResultList();
 		logger.info("jpql_where -> {}", resultList);
 	}
 
