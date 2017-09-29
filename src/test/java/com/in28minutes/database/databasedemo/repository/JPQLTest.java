@@ -75,4 +75,11 @@ public class JPQLTest {
 		logger.info("jpql_where -> {}", resultList);
 	}
 
+	@Test
+	public void	jpql_courses_with_atleast_2_students() {
+		TypedQuery<Course> query = entityManager.createQuery("Select c from Course c where size(c.studentList) >= 2", Course.class);
+		List<Course> resultList = query.getResultList();
+		logger.info("jpql_where -> {}", resultList);
+	}
+
 }
