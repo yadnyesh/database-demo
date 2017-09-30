@@ -54,7 +54,6 @@ public class CourseSpringDataRepositoryTests {
 	@Test
 	public void playingAroundWithSpringDataRepositorySort(){
     	Sort sort = new Sort(Sort.Direction.ASC, "name");
-
 		Course course = new Course("New Microservices in 400 steps");
 		courseRepository.save(course);
 		course.setName("400 Steps for Microservices");
@@ -62,6 +61,8 @@ public class CourseSpringDataRepositoryTests {
 		logger.info("All Sorted Courses -> {}", courseRepository.findAll(sort));
 		logger.info("Total Courses -> {}", courseRepository.count());
 	}
+
+
 
 
 }
