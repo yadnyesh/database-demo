@@ -26,6 +26,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JpaDemoApplication.class)
@@ -90,6 +91,18 @@ public class JPQLTest {
 		TypedQuery<Student> query = entityManager.createQuery("Select s from Student s where s.passport.number like '%1234%' ", Student.class);
 		List<Student> resultList = query.getResultList();
 		logger.info("jpql_where -> {}", resultList);
+	}
+
+	@Test
+	@Transactional
+	public void join() {
+		Query query = entityManager.createQuery("Select c, s from Course c JOIN c.studentList s");
+		List<Object[]> resultList = query.getResultList();
+		logger.info("Size -> {}", resultList.size());
+		for (Object[] result:resultList){
+			logger.info("Course -> {}", result[0] );
+			logger.info("Student -> {}", result[1] );
+		}
 	}
 
 }
