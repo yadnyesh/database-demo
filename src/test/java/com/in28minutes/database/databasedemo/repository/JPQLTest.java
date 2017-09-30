@@ -96,7 +96,7 @@ public class JPQLTest {
 	@Test
 	@Transactional
 	public void join() {
-		Query query = entityManager.createQuery("Select c, s from Course c JOIN c.studentList s");
+		Query query = entityManager.createQuery("Select c, s from Course c LEFT JOIN c.studentList s");
 		List<Object[]> resultList = query.getResultList();
 		logger.info("Size -> {}", resultList.size());
 		for (Object[] result:resultList){
