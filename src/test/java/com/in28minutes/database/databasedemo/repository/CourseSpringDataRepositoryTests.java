@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
@@ -49,5 +50,18 @@ public class CourseSpringDataRepositoryTests {
         logger.info("All Courses -> {}", courseRepository.findAll());
         logger.info("Total Courses -> {}", courseRepository.count());
     }
+
+	@Test
+	public void playingAroundWithSpringDataRepositorySort(){
+    	Sort sort = new Sort(Sort.Direction.ASC, "name");
+
+		Course course = new Course("New Microservices in 400 steps");
+		courseRepository.save(course);
+		course.setName("400 Steps for Microservices");
+		courseRepository.save(course);
+		logger.info("All Sorted Courses -> {}", courseRepository.findAll(sort));
+		logger.info("Total Courses -> {}", courseRepository.count());
+	}
+
 
 }
