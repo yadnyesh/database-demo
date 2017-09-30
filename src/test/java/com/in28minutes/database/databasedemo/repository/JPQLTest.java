@@ -24,6 +24,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -52,7 +55,21 @@ public class JPQLTest {
 
 	@Test
 	public void	jpql_basic() {
-		Query query = entityManager.createNamedQuery("query_get_all_courses");
+//		Query query = entityManager.createNamedQuery("query_get_all_courses");
+//		List<Course> resultList = query.getResultList();
+//		logger.info("Select c From Course c -> {}", resultList)
+
+		//Criteria query implementation
+
+		//CriteriaBuilder to create a CriteriaQuery returning the expected
+		//result object
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Course> cq = cb.createQuery(Course.class);
+
+		//Define roots for tables involved inthe query
+		Root<Course> courseRoot = cq.from(Course.class);
+
+		TypedQuery<Course> query = entityManager.createQuery(cq.select(courseRoot));
 		List<Course> resultList = query.getResultList();
 		logger.info("Select c From Course c -> {}", resultList);
 	}
@@ -105,4 +122,15 @@ public class JPQLTest {
 		}
 	}
 
+	@Test
+	@Transactional
+	public void cross_join() {
+		Query query = entityManager.createQuery("Select c, s from Course c, Student s");
+		List<Object[]> resultList = query.getResultList();
+		logger.info("Size -> {}", resultList.size());
+		for (Object[] result:resultList){
+			logger.info("Course -> {}", result[0] );
+			logger.info("Student -> {}", result[1] );
+		}
+	}
 }
