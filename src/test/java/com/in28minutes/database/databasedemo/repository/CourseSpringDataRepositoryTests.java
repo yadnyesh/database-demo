@@ -65,6 +65,11 @@ public class CourseSpringDataRepositoryTests {
 
 	}
 
+	@Test
+	public void test_findByName(){
+		logger.info("FindByName -> {}", courseRepository.findByName("JPA in 50 Steps"));
+	}
+
 
 
 
