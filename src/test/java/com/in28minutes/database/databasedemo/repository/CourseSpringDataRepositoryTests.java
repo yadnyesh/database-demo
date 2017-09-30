@@ -9,7 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
@@ -53,13 +55,14 @@ public class CourseSpringDataRepositoryTests {
 
 	@Test
 	public void playingAroundWithSpringDataRepositorySort(){
-    	Sort sort = new Sort(Sort.Direction.ASC, "name");
-		Course course = new Course("New Microservices in 400 steps");
-		courseRepository.save(course);
-		course.setName("400 Steps for Microservices");
-		courseRepository.save(course);
-		logger.info("All Sorted Courses -> {}", courseRepository.findAll(sort));
-		logger.info("Total Courses -> {}", courseRepository.count());
+		PageRequest pageRequest = PageRequest.of(0, 3);
+		Page<Course> firstPage = courseRepository.findAll(pageRequest);
+		logger.info("First Page -> {}", firstPage.getContent());
+
+		Pageable secondPageable = firstPage.nextPageable();
+		Page<Course> secondPage = courseRepository.findAll(secondPageable);
+		logger.info("Second Page -> {}", secondPage.getContent());
+
 	}
 
 

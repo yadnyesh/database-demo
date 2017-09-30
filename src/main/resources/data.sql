@@ -18,11 +18,11 @@ insert into course(id, name, created_date, last_updated_date) values(10001,'JPA 
 insert into course(id, name, created_date, last_updated_date) values(10002,'JPA in 60 Steps', sysdate(), sysdate());
 insert into course(id, name, created_date, last_updated_date) values(10003,'JPA in 80 Steps', sysdate(), sysdate());
 insert into course(id, name, created_date, last_updated_date) values(10004,'JPA in 100 Steps', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date) values(10004,'Dummy1', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date) values(10005,'Dummy2', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date) values(10006,'Dummy3', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date) values(10007,'Dummy4', sysdate(), sysdate());
-insert into course(id, name, created_date, last_updated_date) values(10008,'Dummy5', sysdate(), sysdate());
+insert into course(id, name, created_date, last_updated_date) values(10005,'Dummy1', sysdate(), sysdate());
+insert into course(id, name, created_date, last_updated_date) values(10006,'Dummy2', sysdate(), sysdate());
+insert into course(id, name, created_date, last_updated_date) values(10007,'Dummy3', sysdate(), sysdate());
+insert into course(id, name, created_date, last_updated_date) values(10008,'Dummy4', sysdate(), sysdate());
+insert into course(id, name, created_date, last_updated_date) values(10009,'Dummy5', sysdate(), sysdate());
 -- insert into course(id, name, created_date, last_updated_date,is_deleted)
 -- values(10002,'Spring in 50 Steps', sysdate(), sysdate(),false);
 -- insert into course(id, name, created_date, last_updated_date,is_deleted)
