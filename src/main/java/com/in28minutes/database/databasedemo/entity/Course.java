@@ -17,7 +17,7 @@ import java.util.List;
 @NamedQueries(value = {@NamedQuery(name="query_get_all_courses", query = "Select c from Course c"),
         @NamedQuery(name="query_get_100_Step_courses", query = "Select c From Course c where name like '%100 Steps'")})
 
-
+@Cacheable
 public class Course {
     @Id
     @GeneratedValue
