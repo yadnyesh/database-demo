@@ -2,6 +2,7 @@ package com.in28minutes.database.databasedemo.repository;
 
 import com.in28minutes.database.databasedemo.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -11,4 +12,14 @@ import java.util.List;
 public interface CourseSpringDataRepository extends JpaRepository<Course, Long>{
 
     List<Course> findByName(String name);
+    List<Course> findByNameOrderById(String name);
+
+    //JPQL
+    @Query("Select c from Course where name like '%00 Steps' ")
+    List<Course> courseswith100Steps();
+
+    //NativeQuery
+    @Query("Select * from Course where name like '%00 Steps' ")
+    List<Course> courseswith100StepsNativeQuery();
+
 }
