@@ -15,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -38,7 +37,7 @@ public class CourseSpringDataRepositoryTests {
 	}
 
 	@Test
-	@Transactional
+	//@Transactional
 	public void findById_firstLevelCacheDemo(){
 		Optional<Course> courseOptional = courseRepository.findById(10001L);
 		Assert.assertEquals(true, courseOptional.isPresent());
