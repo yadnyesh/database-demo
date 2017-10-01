@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -35,6 +36,20 @@ public class CourseSpringDataRepositoryTests {
         Assert.assertTrue(courseOptional.isPresent());
 		logger.info("Course Optional --> {}", courseOptional.isPresent());
 	}
+
+	@Test
+	@Transactional
+	public void findById_firstLevelCacheDemo(){
+		Optional<Course> courseOptional = courseRepository.findById(10001L);
+		Assert.assertEquals(true, courseOptional.isPresent());
+		logger.info("Course Optional --> {}", courseOptional.get().getName());
+
+		logger.info("Retreiving  course again");
+		Optional<Course> courseOptional2 = courseRepository.findById(10001L);
+		logger.info("Course Optional --> {}", courseOptional2.get().getName());
+	}
+
+
 
 	@Test
 	public void findById_courseNotPresent(){
