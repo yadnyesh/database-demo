@@ -1,6 +1,7 @@
 package com.in28minutes.database.databasedemo.repository;
 
 import com.in28minutes.database.databasedemo.JpaDemoApplication;
+import com.in28minutes.database.databasedemo.entity.Address;
 import com.in28minutes.database.databasedemo.entity.Passport;
 import com.in28minutes.database.databasedemo.entity.Student;
 import org.junit.Test;
@@ -42,6 +43,26 @@ public class StudentRepositoryTests {
 	@Test
 	@Transactional
 	public void retrieveStudentAndPassportDetails() {
+		Student student = studentEntityManager.find(Student.class, 20001L);
+		logger.info("Student -> {}", student);
+		logger.info("Passport -> {}", student.getPassport());
+
+	}
+
+	@Test
+	@Transactional
+	public void setAddressDetails() {
+		Student student = studentEntityManager.find(Student.class, 20001L);
+		student.setAddress(new Address("line1", "line2", "Mumbai"));
+		studentEntityManager.flush();
+		logger.info("Student -> {}", student);
+		logger.info("Passport -> {}", student.getPassport());
+
+	}
+
+	@Test
+	@Transactional
+	public void retrieveStudentAndAddressDetails() {
 		Student student = studentEntityManager.find(Student.class, 20001L);
 		logger.info("Student -> {}", student);
 		logger.info("Passport -> {}", student.getPassport());
